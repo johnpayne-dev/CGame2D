@@ -20,6 +20,8 @@ typedef struct cgWindowFlags
 	bool highDPI;
 } cgWindowFlags;
 
+void cgWindowInitialize(int width, int height, char * title, cgWindowFlags flags);
+
 float cgWindowDPIScale(void);
 
 int cgWindowDisplayIndex(void);
@@ -31,6 +33,8 @@ int cgWindowDisplayHeight(int displayIndex);
 int cgWindowDisplayCount(void);
 
 const char * cgWindowDisplayName(int displayIndex);
+
+void cgWindowExitLoop(void);
 
 int cgWindowWidth(void);
 
@@ -52,8 +56,6 @@ bool cgWindowHasKeyboardFocus(void);
 
 bool cgWindowHasMouseFocus(void);
 
-void cgWindowInitialize(int width, int height, char * title, cgWindowFlags flags);
-
 void cgWindowMaximize(void);
 
 void cgWindowMinimize(void);
@@ -67,8 +69,6 @@ void cgWindowSetFullscreen(bool enable);
 void cgWindowSetConfig(cgWindowFlags flags);
 
 void cgWindowSetPosition(int x, int y);
-
-void cgWindowSetRunning(bool enable);
 
 void cgWindowSetTitle(char * title);
 

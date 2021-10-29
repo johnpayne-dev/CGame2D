@@ -25,6 +25,7 @@ typedef enum cgGamepadAxis
 	cgGamepadAxisRightY,
 	cgGamepadAxisTriggerLeft,
 	cgGamepadAxisTriggerRight,
+	cgGamepadAxisInvalid = -1,
 } cgGamepadAxis;
 
 typedef enum cgGamepadButton
@@ -44,6 +45,8 @@ typedef enum cgGamepadButton
 	cgGamepadButtonDown,
 	cgGamepadButtonLeft,
 	cgGamepadButtonRight,
+	cgGamepadButtonMisc1,
+	cgGamepadButtonInvalid = -1,
 } cgGamepadButton;
 
 int cgJoystickAxis(cgJoystick joystick, int axis);

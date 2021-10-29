@@ -32,6 +32,7 @@ typedef enum cgEvent
 	cgEventWindowFocused,
 	cgEventWindowResized,
 	cgEventWindowVisible,
+	cgEventCount,
 } cgEvent;
 
 typedef union cgEventArgs
@@ -40,7 +41,7 @@ typedef union cgEventArgs
 	{
 		cgJoystick joystick;
 		cgGamepadAxis axis;
-		int value;
+		int16_t value;
 	} gamepadAxis;
 	struct cgEventGamepadPressedArgs
 	{
@@ -59,24 +60,24 @@ typedef union cgEventArgs
 	struct cgEventJoystickAxisArgs
 	{
 		cgJoystick joystick;
-		int axis;
-		int value;
+		uint8_t axis;
+		int16_t value;
 	} joystickAxis;
 	struct cgEventJoystickHatArgs
 	{
 		cgJoystick joystick;
-		int hat;
+		uint8_t hat;
 		cgJoystickHatPosition position;
 	} joystickHat;
 	struct cgEventJoystickPressedArgs
 	{
 		cgJoystick joystick;
-		int button;
+		uint8_t button;
 	} joystickPressed;
 	struct cgEventJoystickReleasedArgs
 	{
 		cgJoystick joystick;
-		int button;
+		uint8_t button;
 	} joystickReleased;
 	struct cgEventJoystickRemovedArgs
 	{
@@ -97,25 +98,25 @@ typedef union cgEventArgs
 	} mouseFocused;
 	struct cgEventMouseMovedArgs
 	{
-		int x, y;
-		int dx, dy;
+		int32_t x, y;
+		int32_t dx, dy;
 		bool isTouch;
 	} mouseMoved;
 	struct cgEventMousePressedArgs
 	{
-		int x, y;
+		int32_t x, y;
 		cgMouseButton button;
 		bool isTouch;
 	} mousePressed;
 	struct cgEventMouseReleasedArgs
 	{
-		int x, y;
+		int32_t x, y;
 		cgMouseButton button;
 		bool isTouch;
 	} mouseReleased;
 	struct cgEventMouseWheelMovedArgs
 	{
-		int x, y;
+		int32_t x, y;
 	} mouseWheelMoved;
 	struct cgEventTextInputArgs
 	{
@@ -123,24 +124,27 @@ typedef union cgEventArgs
 	} textInput;
 	struct cgEventTouchMovedArgs
 	{
-		int id;
-		int x, y;
-		int dx, dy;
-		int pressure;
+		int64_t touchID;
+		int64_t fingerID;
+		float x, y;
+		float dx, dy;
+		float pressure;
 	} touchMoved;
 	struct cgEventTouchPressedArgs
 	{
-		int id;
-		int x, y;
-		int dx, dy;
-		int pressure;
+		int64_t touchID;
+		int64_t fingerID;
+		float x, y;
+		float dx, dy;
+		float pressure;
 	} touchPressed;
 	struct cgEventTouchReleasedArgs
 	{
-		int id;
-		int x, y;
-		int dx, dy;
-		int pressure;
+		int64_t touchID;
+		int64_t fingerID;
+		float x, y;
+		float dx, dy;
+		float pressure;
 	} touchReleased;
 	struct cgEventWindowFocusedArgs
 	{
@@ -148,7 +152,7 @@ typedef union cgEventArgs
 	} windowFocused;
 	struct cgEventWindowResizedArgs
 	{
-		int width, height;
+		int32_t width, height;
 	} windowResized;
 	struct cgEventWindowVisibleArgs
 	{
@@ -157,6 +161,8 @@ typedef union cgEventArgs
 } cgEventArgs;
 
 typedef void (*cgEventCallback)(cgEventArgs);
+
+void cgEventInitialize(void);
 
 void cgEventAddCallback(cgEvent event, cgEventCallback callback);
 

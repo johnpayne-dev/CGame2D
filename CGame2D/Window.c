@@ -78,6 +78,11 @@ const char * cgWindowDisplayName(int displayIndex)
 	return SDL_GetDisplayName(displayIndex);
 }
 
+void cgWindowExitLoop()
+{
+	window.running = false;
+}
+
 int cgWindowWidth()
 {
 	return window.width;
@@ -170,11 +175,6 @@ void cgWindowSetConfig(cgWindowFlags flags)
 void cgWindowSetPosition(int x, int y)
 {
 	SDL_SetWindowPosition(window.pointer, x, y);
-}
-
-void cgWindowSetRunning(bool running)
-{
-	window.running = running;
 }
 
 void cgWindowSetTitle(char * title)
