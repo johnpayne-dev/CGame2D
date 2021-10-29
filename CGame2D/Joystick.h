@@ -1,10 +1,8 @@
 #pragma once
 #include <SDL2/SDL.h>
+#include <stdbool.h>
 
-typedef struct cgJoystick
-{
-	int index;
-} cgJoystick;
+typedef int cgJoystick;
 
 typedef enum cgJoystickHatPosition
 {
@@ -47,3 +45,41 @@ typedef enum cgGamepadButton
 	cgGamepadButtonLeft,
 	cgGamepadButtonRight,
 } cgGamepadButton;
+
+int cgJoystickAxis(cgJoystick joystick, int axis);
+
+int cgJoystickAxisCount(cgJoystick joystick);
+
+int cgJoystickButtonCount(cgJoystick joystick);
+
+int cgJoystickConnectionIndex(cgJoystick joystick);
+
+int cgJoystickCount(void);
+
+char * cgJoystickGUID(cgJoystick joystick);
+
+int cgJoystickGamepadAxis(cgJoystick joystick, cgGamepadAxis axis);
+
+bool cgJoystickGamepadIsPressed(cgJoystick joystick, cgGamepadButton button);
+
+cgJoystickHatPosition cgJoystickHatDirection(cgJoystick joystick, int hat);
+
+int cgJoystickHatCount(cgJoystick joystick);
+
+int cgJoystickID(cgJoystick joystick);
+
+void cgJoystickList(cgJoystick * joysticks);
+
+char * cgJoystickName(cgJoystick joystick);
+
+int cgJoystickVibrationStrength(cgJoystick joystick);
+
+bool cgJoystickConnected(cgJoystick joystick);
+
+bool cgJoystickIsPressed(cgJoystick joystick, int button);
+
+bool cgJoystickIsGamepad(cgJoystick joystick);
+
+bool cgJoystickIsVibration(cgJoystick joystick);
+
+void cgJoystickSetVibration(cgJoystick joystick, int left, int right);
