@@ -84,14 +84,12 @@ typedef union cgEventArgs
 	} joystickRemoved;
 	struct cgEventKeyPressedArgs
 	{
-		cgKeyConstant key;
-		cgScancode scancode;
+		cgKey key;
 		bool repeat;
 	} keyPressed;
 	struct cgEventKeyReleasedArgs
 	{
-		cgKeyConstant key;
-		cgScancode scancode;
+		cgKey key;
 	} keyReleased;
 	struct cgEventMouseFocusedArgs
 	{
