@@ -14,7 +14,6 @@ static struct
 
 void cgWindowInitialize(int width, int height, char * title, cgWindowFlags config)
 {
-	SDL_Init(SDL_INIT_VIDEO);
 	window.width = width;
 	window.height = height;
 	window.title = title;
@@ -185,4 +184,10 @@ void cgWindowSetTitle(char * title)
 void cgWindowSetVsync(bool vsync)
 {
 	SDL_GL_SetSwapInterval(vsync ? 1 : 0);
+}
+
+void cgWindowShutdown()
+{
+	SDL_GL_DeleteContext(window.context);
+	SDL_DestroyWindow(window.pointer);
 }

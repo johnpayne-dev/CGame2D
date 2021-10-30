@@ -175,3 +175,5 @@ void cgEventPush(cgEvent event, cgEventArgs args);
 void cgEventQuit(void);
 
 void cgEventRemoveCallback(cgEvent event, cgEventCallback callback);
+
+void cgEventShutdown(void);

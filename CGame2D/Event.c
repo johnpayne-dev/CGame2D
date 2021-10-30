@@ -11,7 +11,6 @@ void cgEventInitialize()
 	{
 		callbacks[i] = cgListCreate(sizeof(cgEventCallback));
 	}
-	SDL_Init(SDL_INIT_EVENTS);
 }
 
 void cgEventAddCallback(cgEvent event, cgEventCallback callback)
@@ -282,4 +281,9 @@ void cgEventQuit()
 void cgEventRemoveCallback(cgEvent event, cgEventCallback callback)
 {
 	callbacks[event] = cgListRemoveAll(callbacks[event], callback);
+}
+
+void cgEventShutdown()
+{
+	for (int i = 0; i < cgEventCount; i++) { cgListDestroy(callbacks[i]); }
 }

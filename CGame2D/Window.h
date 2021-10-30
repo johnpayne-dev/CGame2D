@@ -73,3 +73,5 @@ void cgWindowSetPosition(int x, int y);
 void cgWindowSetTitle(char * title);
 
 void cgWindowSetVsync(bool vsync);
+
+void cgWindowShutdown(void);
