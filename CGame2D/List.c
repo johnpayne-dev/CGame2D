@@ -28,7 +28,7 @@ static struct cgListData cgListData(cgList(void) list)
 	return data;
 }
 
-unsigned int cgListCount(cgList(void) list)
+unsigned int cgListLength(cgList(void) list)
 {
 	return *(unsigned int *)((uint8_t *)list - MetaSize / 2);
 }
@@ -86,22 +86,22 @@ cgList(void) cgListRemove(cgList(void) list, int index)
 
 cgList(void) cgListPush(cgList(void) list, void * value)
 {
-	return cgListInsert(list, value, cgListCount(list));
+	return cgListInsert(list, value, cgListLength(list));
 }
 
 cgList(void) cgListPop(cgList(void) list)
 {
-	if (cgListCount(list) == 0)
+	if (cgListLength(list) == 0)
 	{
 		//printf("Trying to pop from an empty list.\n");
 		exit(1);
 	}
-	return cgListRemove(list, cgListCount(list) - 1);
+	return cgListRemove(list, cgListLength(list) - 1);
 }
 
 cgList(void) cgListRemoveAll(cgList(void) list, void * value)
 {
-	for (int i = 0; i < cgListCount(list); i++)
+	for (int i = 0; i < cgListLength(list); i++)
 	{
 		if (memcmp((uint8_t *)list + i * cgListElementSize(list), value, cgListElementSize(list)) == 0)
 		{
@@ -114,7 +114,7 @@ cgList(void) cgListRemoveAll(cgList(void) list, void * value)
 
 _Bool cgListContains(cgList(void) list, void * value)
 {
-	for (int i = 0; i < cgListCount(list); i++)
+	for (int i = 0; i < cgListLength(list); i++)
 	{
 		if (memcmp((uint8_t *)list + i * cgListElementSize(list), value, cgListElementSize(list))) { return true; }
 	}

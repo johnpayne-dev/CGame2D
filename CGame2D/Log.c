@@ -17,15 +17,15 @@ static const char * LevelNames[] = { "TRACE", "DEBUG", "INFO", "WARNING", "ERROR
 
 static const char * LevelColors[] = { "\x1b[94m", "\x1b[36m", "\x1b[32m", "\x1b[33m", "\x1b[31m", "\x1b[35m" };
 
-void LogSetFile(FILE * file) { LogState.File = file; }
+void cgLogSetFile(FILE * file) { LogState.File = file; }
 
-void LogSetLevel(cgLogType level) { LogState.Level = level; }
+void cgLogSetLevel(cgLogType level) { LogState.Level = level; }
 
-void LogSetQuiet(bool enable) { LogState.Quiet = enable; }
+void cgLogSetQuiet(bool enable) { LogState.Quiet = enable; }
 
-void LogUseColors(bool enable) { LogState.UseColors = enable; }
+void cgLogUseColors(bool enable) { LogState.UseColors = enable; }
 
-void Log(cgLogType level, const char * file, int line, const char * format, ...)
+void cgLog(cgLogType level, const char * file, int line, const char * format, ...)
 {
 	if (level < LogState.Level) { return; }
 

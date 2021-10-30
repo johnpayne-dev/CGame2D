@@ -18,6 +18,7 @@ void cgWindowInitialize(int width, int height, char * title, cgWindowFlags confi
 	window.height = height;
 	window.title = title;
 	window.config = config;
+	window.running = true;
 	
 	uint32_t flags = SDL_WINDOW_OPENGL;
 	flags |= config.fullscreen ? SDL_WINDOW_FULLSCREEN_DESKTOP : 0;
