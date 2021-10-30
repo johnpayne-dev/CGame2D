@@ -55,7 +55,7 @@ typedef union cgEventArgs
 	} gamepadReleased;
 	struct cgEventJoystickAddedArgs
 	{
-		cgJoystick joystick;
+		int32_t connectionIndex;
 	} joystickAdded;
 	struct cgEventJoystickAxisArgs
 	{

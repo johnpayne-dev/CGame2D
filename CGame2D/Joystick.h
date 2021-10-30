@@ -49,40 +49,34 @@ typedef enum cgGamepadButton
 	cgGamepadButtonInvalid = -1,
 } cgGamepadButton;
 
-int cgJoystickAxis(cgJoystick joystick, int axis);
-
 int cgJoystickAxisCount(cgJoystick joystick);
 
+int16_t cgJoystickAxisValue(cgJoystick joystick, uint8_t axis);
+
 int cgJoystickButtonCount(cgJoystick joystick);
+
+bool cgJoystickConnected(cgJoystick joystick);
 
 int cgJoystickConnectionIndex(cgJoystick joystick);
 
 int cgJoystickCount(void);
 
-char * cgJoystickGUID(cgJoystick joystick);
+cgJoystick cgJoystickFromConnectionIndex(int32_t index);
 
-int cgJoystickGamepadAxis(cgJoystick joystick, cgGamepadAxis axis);
+void cgJoystickGUID(cgJoystick joystick, uint8_t guid[16]);
 
-bool cgJoystickGamepadIsPressed(cgJoystick joystick, cgGamepadButton button);
-
-cgJoystickHatPosition cgJoystickHatDirection(cgJoystick joystick, int hat);
+cgJoystickHatPosition cgJoystickHatDirection(cgJoystick joystick, uint8_t hat);
 
 int cgJoystickHatCount(cgJoystick joystick);
 
-int cgJoystickID(cgJoystick joystick);
+bool cgJoystickIsGamepad(cgJoystick joystick);
+
+bool cgJoystickIsPressed(cgJoystick joystick, uint8_t button);
 
 void cgJoystickList(cgJoystick * joysticks);
 
-char * cgJoystickName(cgJoystick joystick);
+const char * cgJoystickName(cgJoystick joystick);
 
-int cgJoystickVibrationStrength(cgJoystick joystick);
+int16_t cgGamepadAxisValue(cgJoystick joystick, cgGamepadAxis axis);
 
-bool cgJoystickConnected(cgJoystick joystick);
-
-bool cgJoystickIsPressed(cgJoystick joystick, int button);
-
-bool cgJoystickIsGamepad(cgJoystick joystick);
-
-bool cgJoystickIsVibration(cgJoystick joystick);
-
-void cgJoystickSetVibration(cgJoystick joystick, int left, int right);
+bool cgGamepadIsPressed(cgJoystick joystick, cgGamepadButton button);

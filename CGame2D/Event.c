@@ -52,7 +52,7 @@ void cgEventPoll()
 			case SDL_JOYDEVICEADDED:
 				for (int i = 0; i < cgListLength(callbacks[cgEventJoystickAdded]); i++)
 				{
-					callbacks[cgEventJoystickAdded][i]((cgEventArgs){ .joystickAdded = { .joystick = event.cbutton.which } });
+					callbacks[cgEventJoystickAdded][i]((cgEventArgs){ .joystickAdded = { .connectionIndex = SDL_JoystickGetDevicePlayerIndex(event.jdevice.which) } });
 				}
 				break;
 			case SDL_JOYAXISMOTION:
@@ -82,7 +82,7 @@ void cgEventPoll()
 			case SDL_JOYDEVICEREMOVED:
 				for (int i = 0; i < cgListLength(callbacks[cgEventJoystickRemoved]); i++)
 				{
-					callbacks[cgEventJoystickRemoved][i]((cgEventArgs){ .joystickRemoved = { .joystick = event.cbutton.which } });
+					callbacks[cgEventJoystickRemoved][i]((cgEventArgs){ .joystickRemoved = { .joystick = event.jdevice.which } });
 				}
 				break;
 			case SDL_KEYDOWN:
@@ -112,13 +112,13 @@ void cgEventPoll()
 			case SDL_MOUSEBUTTONDOWN:
 				for (int i = 0; i < cgListLength(callbacks[cgEventMousePressed]); i++)
 				{
-					callbacks[cgEventMousePressed][i]((cgEventArgs){ .mousePressed = { .x = event.button.x, .y = event.motion.y, .button = event.button.button, .isTouch = event.button.which == SDL_TOUCH_MOUSEID } });
+					callbacks[cgEventMousePressed][i]((cgEventArgs){ .mousePressed = { .x = event.button.x, .y = event.button.y, .button = event.button.button, .isTouch = event.button.which == SDL_TOUCH_MOUSEID } });
 				}
 				break;
 			case SDL_MOUSEBUTTONUP:
 				for (int i = 0; i < cgListLength(callbacks[cgEventMouseReleased]); i++)
 				{
-					callbacks[cgEventMouseReleased][i]((cgEventArgs){ .mouseReleased = { .x = event.button.x, .y = event.motion.y, .button = event.button.button, .isTouch = event.button.which == SDL_TOUCH_MOUSEID } });
+					callbacks[cgEventMouseReleased][i]((cgEventArgs){ .mouseReleased = { .x = event.button.x, .y = event.button.y, .button = event.button.button, .isTouch = event.button.which == SDL_TOUCH_MOUSEID } });
 				}
 				break;
 			case SDL_MOUSEWHEEL:
