@@ -101,9 +101,7 @@ typedef enum cgKey
 	cgKeyCount = 512
 } cgKey;
 
-char cgKeyboardCharFromScancode(cgKey key);
-
-cgKey cgKeyboardScancodeFromChar(char c);
+void cgKeyboardInitialize(void);
 
 bool cgKeyboardKeyRepeatEnabled(void);
 

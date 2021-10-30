@@ -86,6 +86,7 @@ void cgEventPoll()
 				}
 				break;
 			case SDL_KEYDOWN:
+				if (!cgKeyboardKeyRepeatEnabled() && event.key.repeat) { break; }
 				for (int i = 0; i < cgListLength(callbacks[cgEventKeyPressed]); i++)
 				{
 					callbacks[cgEventKeyPressed][i]((cgEventArgs){ .keyPressed = { .key = (cgKey)event.key.keysym.scancode, .repeat = event.key.repeat } });
@@ -135,6 +136,7 @@ void cgEventPoll()
 				cgWindowExitLoop();
 				break;
 			case SDL_TEXTINPUT:
+				if (!cgKeyboardTextInputEnabled()) { break; }
 				for (int i = 0; i < cgListLength(callbacks[cgEventTextInput]); i++)
 				{
 					callbacks[cgEventTextInput][i]((cgEventArgs){ .textInput = { .text = event.text.text } });
