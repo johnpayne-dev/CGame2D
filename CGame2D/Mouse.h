@@ -1,14 +1,13 @@
 #pragma once
-#include <SDL2/SDL.h>
 #include <stdbool.h>
 
 typedef enum cgMouseButton
 {
-	cgMouseButtonLeft = SDL_BUTTON_LEFT,
-	cgMouseButtonMiddle = SDL_BUTTON_MIDDLE,
-	cgMouseButtonRight = SDL_BUTTON_RIGHT,
-	cgMouseButtonX1 = SDL_BUTTON_X1,
-	cgMouseButtonX2 = SDL_BUTTON_X2,
+	cgMouseButtonLeft = 1,
+	cgMouseButtonMiddle = 2,
+	cgMouseButtonRight = 3,
+	cgMouseButtonX1 = 4,
+	cgMouseButtonX2 = 5,
 } cgMouseButton;
 
 int cgMousePositionX(void);

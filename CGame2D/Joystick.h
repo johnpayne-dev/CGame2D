@@ -1,20 +1,19 @@
 #pragma once
-#include <SDL2/SDL.h>
 #include <stdbool.h>
 
 typedef int cgJoystick;
 
 typedef enum cgJoystickHatPosition
 {
-	cgJoystickHatPositionUp = SDL_HAT_UP,
-	cgJoystickHatPositionDown = SDL_HAT_DOWN,
-	cgJoystickHatPositionLeft = SDL_HAT_LEFT,
-	cgJoystickHatPositionRight = SDL_HAT_RIGHT,
-	cgJoystickHatPositionLeftUp = SDL_HAT_LEFTUP,
-	cgJoystickHatPositionRightUp = SDL_HAT_RIGHTUP,
-	cgJoystickHatPositionLeftDown = SDL_HAT_LEFTDOWN,
-	cgJoystickHatPositionRightDown = SDL_HAT_RIGHTDOWN,
-	cgJoystickHatPositionCentered = SDL_HAT_CENTERED,
+	cgJoystickHatPositionCentered = 0x0,
+	cgJoystickHatPositionUp = 0x01,
+	cgJoystickHatPositionDown = 0x04,
+	cgJoystickHatPositionLeft = 0x08,
+	cgJoystickHatPositionRight = 0x02,
+	cgJoystickHatPositionLeftUp = 0x09,
+	cgJoystickHatPositionRightUp = 0x03,
+	cgJoystickHatPositionLeftDown = 0x0C,
+	cgJoystickHatPositionRightDown = 0x06,
 } cgJoystickHatPosition;
 
 typedef enum cgGamepadAxis
