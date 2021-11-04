@@ -1,3 +1,4 @@
+#include <SDL2/SDL.h>
 #include "Joystick.h"
 
 int cgJoystickAxisCount(cgJoystick joystick)

@@ -106,3 +106,29 @@ void * cgCanvasCreateImageData(cgCanvas canvas);
 void * cgCanvasCreateImageDataSub(cgCanvas canvas, int slice, int mipmap, int x, int y, int width, int height);
 cgTexture cgCanvasTexture(cgCanvas canvas);
 
+struct cgFont;
+typedef struct cgFont * cgFont;
+
+int cgFontAscent(cgFont font);
+int cgFontBaseline(cgFont font);
+int cgFontDPIScale(cgFont font);
+int cgFontDescent(cgFont font);
+cgFilterMode cgFontMinFilter(cgFont font);
+cgFilterMode cgFontMaxFilter(cgFont font);
+int cgFontAnisotropy(cgFont font);
+int cgFontHeight(cgFont font);
+float cgFontLineHeight(cgFont font);
+int cgFontWidth(cgFont font, char * text);
+int cgFontWrapWidth(cgFont font, char * text, int limit);
+bool cgFontHasGlyphs(cgFont font, char * glyphs);
+void cgFontSetFallbacks(cgFont font, cgFont fallback1, ...);
+void cgFontSetFilter(cgFont font, cgFilterMode min, cgFilterMode mag, int anisotropy);
+void cgFontSetLineHeight(cgFont font, int height);
+
+struct cgImage;
+typedef struct cgImage * cgImage;
+
+bool cgImageIsCompressed(cgImage image);
+bool cgImageIsFormatLinear(cgImage image);
+void cgImageReplacePixels(cgImage image, void * data, int slice, int mipmap, int x, int y, bool reloadMipmaps);
+cgTexture cgImageTexture(cgImage image);

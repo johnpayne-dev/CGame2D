@@ -1,3 +1,4 @@
+#include <SDL2/SDL.h>
 #include "Mouse.h"
 #include "Window.h"
 
